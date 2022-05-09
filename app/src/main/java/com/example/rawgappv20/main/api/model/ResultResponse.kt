@@ -38,6 +38,10 @@ data class ResultResponse(
     val suggestionsCount: Int,
     @SerializedName("updated")
     val updated: String,
+    @SerializedName("user_game")
+    val userGame: String,
+    @SerializedName("reviews_count")
+    val reviewsCount: Int,
     @SerializedName("saturated_color")
     val saturatedColor: String,
     @SerializedName("dominant_color")

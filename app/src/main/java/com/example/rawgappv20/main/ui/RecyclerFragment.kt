@@ -55,7 +55,7 @@ class RecyclerFragment :
 
     override fun showGames(results: List<Results>) {
         gamesAdapter.setData(results)
-        Log.i("###", results.toString())
+        Log.i("###", "SetData in recyclerFragment")
     }
 
     override fun onFail(throwable: Throwable) {
