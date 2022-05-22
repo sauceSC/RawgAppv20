@@ -15,5 +15,5 @@ data class PlatformXResponse(
     @SerializedName("games_count")
     val gamesCount: Int,
     @SerializedName("image_background")
-    val imageBackground:Int
+    val imageBackground:String
 )

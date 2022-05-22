@@ -17,12 +17,9 @@ class GamesPresenter(
         presenterScope.launch {
             try {
                 val data = gameInteractor.getResults()
-                Log.i("###", "presenter data")
                 view?.showGames(data)
-                Log.i("###", "presenter showgames")
             } catch (throwable: Throwable) {
                 throwable.message?.let { Log.e("###", it) }
-                Log.i("###", "ALARM")
             }
 
         }

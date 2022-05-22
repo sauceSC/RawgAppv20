@@ -2,4 +2,7 @@
     <string name="app_name">RawgApp v.2.0</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_77">77</string>
+    <string name="counter_strike_global_offensive">Counter-Strike: Global Offensive</string>
+    <string name="playtime_24h">playtime: 24h</string>
 </resources>

@@ -1,8 +1,6 @@
 package com.example.rawgappv20.main.model
 
 import android.os.Parcelable
-import com.example.rawgappv20.main.api.model.PlatformXResponse
-import com.example.rawgappv20.main.api.model.RequirementsResponse
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/dark_background">
-
+    android:padding="12dp"
+    android:background="@color/dark_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_image"
+        android:id="@+id/cv_little_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_background"
@@ -22,77 +21,52 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/game_image"
-                android:layout_width="match_parent"
-                android:layout_height="256dp"
+                android:id="@+id/little_image"
+                android:layout_width="148dp"
+                android:layout_height="148dp"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:contentDescription="ignore"
-                tools:layout_editor_absoluteX="0dp"
-                tools:src="@tools:sample/avatars" />
+                tools:src="@tools:sample/avatars"
+                tools:contentDescription="ignore" />
 
             <ImageView
-                android:background="@color/dark_background"
-                android:id="@+id/im_playstation"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_playstation"
-                android:visibility="gone"
-                android:layout_marginHorizontal="5dp"
-                android:elevation="5dp"
-                app:layout_constraintStart_toStartOf="@+id/game_image"
-                app:layout_constraintTop_toTopOf="@+id/game_image" />
-
-            <ImageView
-                android:background="@color/dark_background"
-                android:id="@+id/im_xbox"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_xbox"
-                android:visibility="gone"
-                android:layout_marginHorizontal="5dp"
-                android:elevation="5dp"
-                app:layout_constraintStart_toEndOf="@+id/im_playstation"
-                app:layout_constraintTop_toTopOf="@+id/im_playstation" />
-
-            <ImageView
-                android:background="@color/dark_background"
-                android:id="@+id/im_pc"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_windows"
-                android:visibility="gone"
-                android:layout_marginHorizontal="5dp"
-                android:elevation="5dp"
-                app:layout_constraintStart_toEndOf="@+id/im_xbox"
+                android:id="@+id/gradient_horizontal"
+                android:layout_width="148dp"
+                android:layout_height="148dp"
+                android:src="@drawable/item_gradient_horizontal"
+                android:layout_marginStart="74dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/little_image"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
-                android:id="@+id/text"
+                android:id="@+id/tv_little_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_bold"
+                android:text="Team Fortress"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="28dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/cv_rating"
-                app:layout_constraintHorizontal_bias="0.648"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/game_image"
-                app:layout_constraintVertical_bias="0.529"
-                tools:text="@tools:sample/lorem" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.351"
+                app:layout_constraintStart_toEndOf="@+id/gradient_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_rating"
+                android:id="@+id/cv_metacritic_little"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/dark_background"
                 app:cardCornerRadius="5dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginEnd="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/game_image"
                 app:strokeColor="@android:color/holo_green_light"
                 app:strokeWidth="1dp">
 
@@ -101,7 +75,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/tv_metacritic"
+                        android:id="@+id/tv_metacritic_little"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -117,14 +91,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
             </com.google.android.material.card.MaterialCardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

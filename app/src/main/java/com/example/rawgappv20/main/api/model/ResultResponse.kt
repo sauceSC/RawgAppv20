@@ -57,9 +57,9 @@ data class ResultResponse(
     @SerializedName("stores")
     val stores: List<StoresResponse>,
     @SerializedName("clip")
-    val clip: String,
+    val clip: String?,
     @SerializedName("tags")
     val tags: List<TagsResponse>,
     @SerializedName("short_screenshots")
-    val shortScreenshots: ShortScreenshotsResponse
+    val shortScreenshots: List<ShortScreenshotsResponse>
 )

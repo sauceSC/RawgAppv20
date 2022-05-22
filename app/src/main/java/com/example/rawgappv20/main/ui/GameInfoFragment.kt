@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.rawgappv20.R
 import com.example.rawgappv20.databinding.FragmentGameInfoBinding
+import com.example.rawgappv20.main.model.MainGames
 import com.example.rawgappv20.main.model.Results
 
 
@@ -26,11 +27,12 @@ class GameInfoFragment : Fragment(R.layout.fragment_game_info) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = arguments?.getParcelable<Results>("result") as Results
+        val data = arguments?.getParcelable<MainGames>("result") as MainGames
         with(binding){
-            name.text = data.name
-            context?.let { Glide.with(it).load(data.backgroundImage).into(gameImageInfo) }
-
+            tvName.text = data.name
+            Glide.with (gameImageInfo).load(data.image).into(gameImageInfo)
+            averagePlaytime.text = "Average playtime: ${data.playtime} h"
+            rating.text = "Rating: ${data.ratingTop}/5"
         }
     }
 
