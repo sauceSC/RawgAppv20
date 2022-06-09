@@ -1,70 +1,46 @@
 package com.example.rawgappv20.main.converter
 
-import com.example.rawgappv20.main.api.model.GamesResponse
-import com.example.rawgappv20.main.api.model.ResultResponse
-import com.example.rawgappv20.main.model.MainGames
-import com.example.rawgappv20.utils.Constants.BIGIMAGE_VIEW_TYPE
-import com.example.rawgappv20.utils.Constants.NOIMAGE_VIEW_TYPE
-import com.example.rawgappv20.utils.Constants.SMALLIMAGE_VIEW_TYPE
+import com.example.rawgappv20.main.api.game_model.GamesResponse
+import com.example.rawgappv20.main.api.genres_model.GenreGameResponse
+import com.example.rawgappv20.main.api.genres_model.GenreResponse
+import com.example.rawgappv20.main.model.games.Genres
+import com.example.rawgappv20.main.model.games.Results
+import com.example.rawgappv20.main.model.genres.GenreGame
+import com.example.rawgappv20.main.model.genres.MainGenres
 
 object Converter {
 
-    fun fromType(response: GamesResponse): List<MainGames> =
-        response.results.map {
-            when (val typeRandom = listOf<Int>(1, 2, 3).random()) {
-                SMALLIMAGE_VIEW_TYPE -> smallImage(response = it, type = typeRandom)
-                BIGIMAGE_VIEW_TYPE -> bigImage(response = it, type = typeRandom)
-                NOIMAGE_VIEW_TYPE -> noImage(response = it, type = typeRandom)
-                else -> throw IllegalArgumentException("error in Converter")
-            }
 
-        }
-}
-
-fun smallImage(response: ResultResponse, type: Int): MainGames.SmallImage =
-    MainGames.SmallImage(
-        image = response.backgroundImage,
-        name = response.name,
-        metacritic = response.metacritic,
-        type = type,
-        playtime = response.playtime,
-        ratingTop = response.ratingTop
-    )
-
-fun bigImage(response: ResultResponse, type: Int): MainGames.Image =
-    MainGames.Image(
-        image = response.backgroundImage,
-        name = response.name,
-        metacritic = response.metacritic,
-        type = type,
-        playtime = response.playtime,
-        ratingTop = response.ratingTop
-    )
-
-fun noImage(
-    response: ResultResponse,
-    type: Int
-): MainGames.Description =
-    MainGames.Description(
-        name = response.name,
-        image = response.backgroundImage,
-        metacritic = response.metacritic,
-        type = type,
-        playtime = response.playtime,
-        ratingTop = response.ratingTop
-    )
-
-
-/*fun fromType(response: ResultResponse): List<MainGames> {
-        val list = MainGames.SmallImage(
-           image = response.backgroundImage,
-            name = response.name,
-            metacritic = response.metacritic,
-            type = listOf(1, 2, 3).random()Z
+    fun genreFromNetwork(response: GenreResponse) =
+        MainGenres(
+            games = genreGamesFromNetwork(response.genres)
         )
-        return listOf(list)
-    }*/
+
+    fun genreGamesFromNetwork(genres: List<GenreGameResponse>) =
+        genres.map {
+            GenreGame(
+                name = it.name,
+                slug = it.slug
+            )
+        }
 
 
-
-
+    fun fromNetwork(response: GamesResponse): List<Results> {
+        return response.results.map {
+            Results(
+                name = it.name,
+                backgroundImage = it.backgroundImage,
+                ratingTop = it.ratingTop,
+                metacritic = it.metacritic,
+                playtime = it.playtime,
+                genre = it.genres.map {
+                    Genres(
+                        id = it.id,
+                        name = it.name,
+                        slug = it.slug
+                    )
+                }
+            )
+        }
+    }
+}
